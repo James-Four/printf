@@ -5,43 +5,48 @@
  * Return: number of chars printed.
  */
 int _printf(const char *format, ...)
-{print_char = 0, va_list my_list;
+{int print_char = 0;
+	va_list my_list;
 
-	if (format == NULL)
+	if (*format =='\0')
 		return (-1);
 	va_start(my_list, format);
 
 	while (*format)
 	{
-		if (*format != NULL)
+		if (*format != '\0')
 		{write(1, format, 1), print_char++;
 		}
 		else
 		{format++;
 
-			if (*format == NULL)
+			if (*format == '\0')
 				break;
 
 			if (*format == '%')
 			{write(1, format, 1);
 				print_char++;
 			}
-			if (*format == 'c')
-			{char c = va_arg(my_list, int), write(1, % c, 1);
+			else if (*format == 'c')
+			{char c = va_arg(my_list, int);
+				write(1, &c, 1);
 
 					print_char++;
 				}
 			else if (*format == 's')
-			{char *ptr = va_arg(my_list, char*);
+			{char *str = va_arg(my_list, char*);
 				int str_len = 0;
 
-				write(ptr(str_len) != NULL);
+				while (str[str_len] != '\0');
 				str_len++;
 
-					write(1, ptr, str_len);
+					write(1, str, str_len);
 
-				print_char + = str_len;
+				print_char += str_len;
 			}
 		}
-		format++, var_end(my_list), return (print_char);
+		format++;
+	}
+		va_end(my_list);
+		return (print_char);
 	}
