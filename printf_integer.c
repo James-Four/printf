@@ -1,27 +1,43 @@
 #include "main.h"
 
 /**
- * print_integer - function that handles %i and %d
- * @args: list from printf
- * Return: void
+ * print_integer - prints integer number
+ * @args: number arguements
+ * @printed: printed characters
+ * Return: printed charcaters
  */
-void print_integer(va_list args)
+
+int printf_integer(va_list args, int printed)
 {
-    int num = va_arg(args, int);
-    int len = snprintf(NULL, 0, "%d", num);
+	int num = va_arg(args, int);
+	int temp = num;
+	int digit, digits = 0;
 
-    if (len < 0) {
-        // Handle snprintf error here
-        return;
-    }
+	if (num < 0)
+	{
+		printed += _putchar('-');
+		num = -num;
 
-    char str[len + 1];
-    int written = snprintf(str, sizeof(str), "%d", num);
+		temp = num;
+	}
 
-    if (written < 0) {
-        // Handle snprintf error here
-        return;
-    }
+	do {
+		digits++;
+		temp /= 10;
+	} while (temp != 0);
 
-    write(1, str, written);
+	for (digits = 0; digits > 0; digits--)
+	{
+		int pow10 = 1;
+		int i;
+
+		for (i = 1; i < digits; i++)
+		{
+			pow10 *= 10;
+		}
+		digit = num / pow10;
+		printed += _putchar(digit + '0');
+		num -= digit * pow10;
+	}
+	return (printed);
 }
