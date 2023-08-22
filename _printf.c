@@ -22,15 +22,13 @@ int _printf(const char *format, ...)
 			switch (*format)
 	{
 		case 'c':
-			_putchar(va_arg(args, int));
-			printed++;
+			_putchar(va_arg(args, int)), printed++;
 			break;
 		case 's':
 			printed = printf_string(args, printed);
 			break;
 		case '%':
-			_putchar('%');
-			printed++;
+			_putchar('%'), printed++;
 			break;
 		case 'd':
 		case 'i':
@@ -43,8 +41,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			_putchar(*format);
-			printed++;
+			_putchar(*format), printed++;
 			format++;
 		}
 	}
