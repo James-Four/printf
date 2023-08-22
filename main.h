@@ -11,6 +11,5 @@ int printf_char(va_list args, int printed);
 int printf_string(va_list args, int printed);
 int _printf(const char *format, ...);
 int print_digits(va_list args, int printed);
-int print_binary(unsigned int num, int printed):
 
 #endif
