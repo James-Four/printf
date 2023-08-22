@@ -36,6 +36,9 @@ int _printf(const char *format, ...)
 		case 'i':
 			print_digits(args, printed);
 			break;
+		case 'b':
+			printed = print_binary(va_arg(args, unsigned int), printed);
+			break;
 		default:
 			break;
 	}
