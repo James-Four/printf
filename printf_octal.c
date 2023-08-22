@@ -19,18 +19,19 @@ int printf_octal(unsigned int num, int printed)
 		i++;
 		num /= 8;
 	}
-	if (i != 0)
+
+	if (i == 0)
+	{
+		_putchar('0');
+		printed++;
+	}
+	else
 	{
 		for (j = i - 1; j >= 0; j--)
 		{
 			_putchar(oct[j]);
 			printed++;
 		}
-	}
-	else
-	{
-		_putchar('0');
-		printed++;
 	}
 	return (printed);
 }
