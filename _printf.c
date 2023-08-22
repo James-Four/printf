@@ -1,50 +1,65 @@
 #include "main.h"
+#include <stdarg.h>
+
 /**
- * _printf - printd function
- * @format: input
- * Return: the number of primted characters
+ * _printf - custom printf function
+ * @format: format string
+ * Return: the number of printed characters
  */
 int _printf(const char *format, ...)
 {
-	int printed = 0;
-	va_list args;
+    int printed = 0;
+    va_list args;
 
-	if (format == NULL)
-		return (-1);
+    if (format == NULL)
+        return (-1);
 
-	va_start(args, format);
+    va_start(args, format);
 
-	while (*format != '\0')
-	{
-		if (*format == '%')
-		{
-			format++;
-			switch (*format)
-	{
-		case 'c':
-			_putchar(va_arg(args, int)), printed++;
-			break;
-		case 's':
-			printed = printf_string(args, printed);
-			break;
-		case '%':
-			_putchar('%'), printed++;
-			break;
-		case 'd':
-		case 'i':
-			printf_integer(args, printed);
-			break;
-		default:
-			break;
-	}
-			format++;
-		}
-		else
-		{
-			_putchar(*format), printed++;
-			format++;
-		}
-	}
-	va_end(args);
-	return (printed);
+    while (*format)
+    {
+        if (*format == '%')
+        {
+            format++;
+            switch (*format)
+            {
+                case 'c':
+                    // Handle 'c' format specifier
+                    _putchar(va_arg(args, int));
+                    printed++;
+                    break;
+                case 's':
+                    // Handle 's' format specifier
+                    printed += printf_string(args, printed);
+                    break;
+                case '%':
+                    // Handle '%%' format specifier
+                    _putchar('%');
+                    printed++;
+                    break;
+                case 'd':
+                case 'i':
+                    // Handle 'd' and 'i' format specifiers
+                    print_digits(args, printed);
+                    // Increment printed (since print_integer doesn't return a value)
+                    printed++;
+                    break;
+                default:
+                    // Handle unknown format specifier
+                    _putchar('%');
+                    _putchar(*format);
+                    printed += 2;
+                    break;
+            }
+        }
+        else
+        {
+            _putchar(*format);
+            printed++;
+        }
+        format++;
+    }
+
+    va_end(args);
+    return (printed);
 }
