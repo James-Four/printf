@@ -14,5 +14,6 @@ int _printf(const char *format, ...);
 int print_digits(va_list args, int printed);
 int printf_integer(va_list args, int printed);
 int printf_reverse(va_list args, int printed);
+int printf_octal(unsigned int num, int printed);
 
 #endif

@@ -39,6 +39,9 @@ int _printf(const char *format, ...)
 		case 'r':
 			printed = printf_reverse(args, printed);
 			break;
+		case '0':
+			printed = printf_octal(va_arg(args, unsigned int), printed);
+			break;
 		default:
 			break;
 	}
