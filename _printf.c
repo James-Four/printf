@@ -34,9 +34,8 @@ int _printf(const char *format, ...)
 			break;
 		case 'd':
 		case 'i':
-			print_digits(args, printed);
+			printf_integer(args, printed);
 			break;
-		case 'b':
 		default:
 			break;
 	}
