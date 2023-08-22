@@ -1,8 +1,8 @@
 #include "main.h"
 /**
- * _printf - printd function
+ * _printf - printf function
  * @format: input
- * Return: the number of primted characters
+ * Return: the number of printed characters
  */
 int _printf(const char *format, ...)
 {
@@ -31,10 +31,6 @@ int _printf(const char *format, ...)
 		case '%':
 			_putchar('%');
 			printed++;
-			break;
-		case 'd':
-		case 'i':
-			print_digit(args);
 			break;
 		default:
 			break;
