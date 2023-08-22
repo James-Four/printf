@@ -8,9 +8,9 @@ int _printf(const char *format, ...)
 {
 	int printed = 0;
 	va_list args;
-	if (format == NULL)
-	return -1;
 
+	if (format == NULL)
+	return (-1);
 	va_start(args, format);
 
 	while (*format)
