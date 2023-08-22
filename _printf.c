@@ -36,6 +36,9 @@ int _printf(const char *format, ...)
 		case 'd':
 			printed = printf_integer(args, printed);
 			break;
+		case 'r':
+			printed = printf_reverse(args, printed);
+			break;
 		default:
 			break;
 	}
