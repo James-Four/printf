@@ -81,32 +81,18 @@ int loop_format(va_list arg, const char *string)
  */
 int check_percent(int *flag, char aux)
 {
-    int tmp_flag;
-    int cont = 0;
+	int tmp_flag;
+	int cont = 0;
 
-    tmp_flag = *flag;
-    
-    if (tmp_flag == 1 && aux == '%')
-    {
-        _putchar('%');
-        tmp_flag = 0;
-        cont = 1;
-    }
-    else if (aux == '%')
-    {
-        tmp_flag = 1;
-        cont = 1;
-    }
-    else
+	tmp_flag = *flag;
+	if (tmp_flag == 2 && aux == '%')
 	{
-        tmp_flag = 0;
+		_putchar('%');
+		tmp_flag = 0;
+		cont = 1;
 	}
-	
-    *flag = tmp_flag; // Update the flag value
-
-    return (cont);
+	return (cont);
 }
-
 
 /**
  * call_function_manager - call function manager
