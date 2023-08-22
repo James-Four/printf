@@ -24,10 +24,6 @@ int _printf(const char *format, ...)
 		{
 			switch (*format++)
 			{
-				case '\0':
-					{
-						break;
-					}
 				case '%':
 					{
 						_putchar('%');
